@@ -1,0 +1,33 @@
+{
+  "name": "hardwire-cli",
+  "description": "CLI for Hardwire",
+  "version": "0.0.1",
+  "author": "Jacobo Tabernero - jacobo@xarope.eu",
+  "homepage": "https://github.com/jacoborus/hardwire-cli",
+  "main": "bin/hardwire",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:jacoborus/hardwire-cli.git"
+  },
+  "keywords": [
+    "cli",
+    "hardwire",
+    "generator",
+    "framework"
+  ],
+  "bin": {
+    "hardwire": "./bin/hardwire"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jacoborus/hardwire-cli/issues"
+  },
+  "dependencies": {
+    "hardwire-boilerplates": "0.0.1",
+    "minimist": "^0.1.0",
+    "ncp": "^0.5.1"
+  }
+}
