@@ -3,9 +3,10 @@
 'use strict';
 
 var ncp = require('ncp'),
-	path = require('path');
-
-var argv = require('minimist')(process.argv.slice(2));
+	path = require('path'),
+	mkdirp = require('mkdirp'),
+	argv = require('minimist')(process.argv.slice(2)),
+	createAdmin = require( __dirname + '/../lib/create-admin-user.js');
 
 var printHelp = function () {
 	var helpText = '\n' +
@@ -13,46 +14,41 @@ var printHelp = function () {
 		'============\n\n' +
 		'Usage: hardwire [options] [dir]\n\n' +
 		'Options:\n\n' +
-		'  -g <boilerplate>      generate boilerplate (basic or blog)\n' +
-		'  -i <plugin>           install plugin (not ready)\n' +
-		'  -h                    show this help' +
+		'  -g <dirPath>          generate boilerplate\n' +
+		'  -c --create-admin     create admin user in DB\n' +
+		'  -h, --help            show this help' +
 		'\n\n';
 	console.log( helpText );
 };
 
-var generate = function (boilerplate, dir) {
-	dir = dir || '.';
-	dir = path.resolve( dir );
-	if (typeof boilerplate === 'boolean') {
-		console.log( 'Error: -b option needs boilerplate param');
-		process.exit(1);
-	} else if (boilerplate === 'basic') {
-		ncp( path.resolve( __dirname, '../node_modules/hardwire-boilerplates/basic' ), dir, function (err) {
-			if (err) {
-				return console.error(err);
-			}
- 			console.log('Basic boilerplate installed!');
-		});
-	} else if (boilerplate === 'blog') {
-		ncp( path.resolve( __dirname, '../node_modules/hardwire-boilerplates/blog' ), dir, function (err) {
-			if (err) {
-				return console.error(err);
-			}
- 			console.log('Blog boilerplate installed!');
-		});
-	} else {
-		console.log( 'Bad boilerplate key' );
+
+var generate = function (dir) {
+	if (!dir || typeof dir !== 'string') {
+		dir = '.';
 	}
+	dir = path.resolve( dir );
+	ncp( path.resolve( __dirname, '../boilerplate' ), dir, function (err) {
+		if (err) {
+			console.error( err );
+			process.exit( 1 );
+		}
+		mkdirp( dir + '/app/views');
+		mkdirp( dir + '/app/models');
+		mkdirp( dir + '/app/controllers');
+		mkdirp( dir + '/app/routes');
+		mkdirp( dir + '/app/public');
+		console.log('Basic boilerplate installed!');
+	});
 };
 
 var readOpts = function () {
-	if (argv.h) { return printHelp();}
-	if (argv.i) { console.log( '\nHardwire plugins are coming soon\n');}
+	if (argv.h || argv.help) { return printHelp();}
 	if (argv.g) {
-		generate( argv.g, argv._[0] );
-	}
-	if (!argv.i && ! argv.g) {
-		printHelp();
+		return generate();
+	} else if (argv.c) {
+		return createAdmin();
+	} else {
+		return printHelp();
 	}
 };
 

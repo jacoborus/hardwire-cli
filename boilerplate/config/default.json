@@ -1,0 +1,30 @@
+{
+    "seo" : {
+        "appname" : "hw-boilerplate",
+        "keywords" : [
+            "cms",
+            "nodejs"
+        ],
+        "description" : ""
+    },
+    "cookie_secret":"mysecret",
+    "session":{
+        "key":"mykey",
+        "secret": "mysecret"
+    },
+    "request_timeout":1000,
+    "globalUrl" : "localhost:3000",
+    "port":3000,
+    "mongodb":{
+        "uri":"mongodb://localhost:27017/hw-boilerplate"
+    },
+    "character_encoding":"utf-8",
+    "uploadFolders" : {},
+	"passports" : {
+        "local" : true
+    },
+    "publicFolders" : {},
+    "tempFolder" : "temp",
+    "logPath": "datapack/log",
+    "plugins": []
+}

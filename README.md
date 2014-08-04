@@ -28,8 +28,7 @@ Usage
 Options:
 
 ```
-  -g <boilerplate>      generate boilerplate (basic or blog)
-  -i <plugin>           install plugin (not ready)
+  -g <folder>           generate boilerplate
   -h                    show this help
 ```
 
