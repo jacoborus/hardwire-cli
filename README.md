@@ -29,6 +29,7 @@ Options:
 
 ```
   -g <folder>           generate boilerplate
+  -c                    create admin user
   -h                    show this help
 ```
 
