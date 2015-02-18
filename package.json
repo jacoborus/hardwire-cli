@@ -1,7 +1,7 @@
 {
   "name": "hardwire-cli",
   "description": "CLI for Hardwire",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "author": "Jacobo Tabernero - jacobo@xarope.eu",
   "homepage": "https://github.com/jacoborus/hardwire-cli",
   "main": "bin/hardwire",

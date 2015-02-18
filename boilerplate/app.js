@@ -1,3 +1,3 @@
-var path = require('path');
-var hardwire = require('hardwire');
-module.exports = hardwire( __dirname );
+'use strict';
+
+module.exports = require('hardwire')( __dirname );
