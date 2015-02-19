@@ -1,5 +1,11 @@
+Deprecated. Use Hardwire npm scripts
+====================================
+
+
 Hardwire CLI
 ============
+
+
 
 Command line interface for Hardwire.
 
